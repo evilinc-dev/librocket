@@ -1,3 +1,11 @@
+# Editors and IDEs
+.idea
+.vscode
+.classpath
+*.project
+*.sln
+*.xcodeproj
+
 # Prerequisites
 *.d
 
