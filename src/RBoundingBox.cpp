@@ -325,12 +325,14 @@ API void RBoundingBox::transform(const RMatrix& matrix)
     getCorners(corners);
 
     // Transform the corners, recalculating the min and max points along the way.
-    corners[0] = (RVector4(corners[0], 1.0f) * matrix).xyz();
+    RVector4 corner = (matrix* RVector4(corners[0].x, corners[0].y, corners[0].z, 1.0f));
+    RVector3 c = RVector3(corner.x, corner.y, corner.z);
+    corners[0] = c;
     RVector3 newMin = corners[0];
     RVector3 newMax = corners[0];
     for (int i = 1; i < 8; i++)
     {
-        corners[i] = (RVector4(corners[0], 1.0f) * matrix).xyz();
+        corners[i] = c;
         updateMinMax(&corners[i], &newMin, &newMax);
     }
     this->min.x = newMin.x;

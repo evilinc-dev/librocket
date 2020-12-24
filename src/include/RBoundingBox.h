@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.h"
+#include "RVector3.h"
 #include "RFrustum.h"
 
 namespace rocket

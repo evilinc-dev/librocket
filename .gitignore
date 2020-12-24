@@ -1,6 +1,7 @@
 # Editors and IDEs
 .idea
 .vscode
+.vs
 .classpath
 *.project
 *.sln

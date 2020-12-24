@@ -2,9 +2,10 @@
 
 namespace rocket
 {
-    API
-    REngine& REngine::instance(){
-        static REngine instance;
-        return instance;
-    }
+
+API REngine& REngine::instance(){
+    static REngine instance;
+    return instance;
+}
+
 }

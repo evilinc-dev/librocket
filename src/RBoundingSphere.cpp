@@ -285,19 +285,19 @@ API void RBoundingSphere::set(const RBoundingBox& box)
     center.x = (box.min.x + box.max.x) * 0.5f;
     center.y = (box.min.y + box.max.y) * 0.5f;
     center.z = (box.min.z + box.max.z) * 0.5f;
-    radius = glm::distance(center, box.max);
+    radius = (box.max - center).length();
 }
 
 API void RBoundingSphere::transform(const RMatrix& matrix)
 {
     // Translate the center point.
     //matrix.transformPoint(center, &center);
-    center = (RVector4(center, 1.0f) * matrix).xyz();
+    RVector4 c = (matrix * RVector4(center.x, center.y, center.z, 1.0f));
+    center = RVector3(c.x, c.y, c.z);
     // Scale the sphere's radius by the scale fo the matrix
-    glm::vec3 scale, t, s;
-    glm::vec4 p;
-    glm::quat rot;
-    glm::decompose(matrix, scale, rot, t, s, p);
+    RVector3 scale, t;
+    RQuaternion rot;
+    matrix.decompose(&scale, &rot, &t);
     //matrix.decompose(&scale, NULL, NULL);
     float r = radius * scale.x;
     r = max(r, radius * scale.y);

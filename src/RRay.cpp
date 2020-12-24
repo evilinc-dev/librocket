@@ -5,7 +5,6 @@
 #include <RBoundingSphere.h>
 #include <RBoundingBox.h>
 
-using std::min;
 
 namespace rocket
 {
@@ -113,11 +112,11 @@ float RRay::intersects(const RFrustum& RFrustum) const
 
     // Otherwise, the intersection distance is the minimum positive intersection distance.
     float d = (nD > 0.0f) ? nD : 0.0f;
-    d = (fD > 0.0f) ? ((d == 0.0f) ? fD : min(fD, d)) : d;
-    d = (lD > 0.0f) ? ((d == 0.0f) ? lD : min(lD, d)) : d;
-    d = (rD > 0.0f) ? ((d == 0.0f) ? rD : min(rD, d)) : d;
-    d = (tD > 0.0f) ? ((d == 0.0f) ? bD : min(bD, d)) : d;
-    d = (bD > 0.0f) ? ((d == 0.0f) ? tD : min(tD, d)) : d;
+    d = (fD > 0.0f) ? ((d == 0.0f) ? fD : std::min(fD, d)) : d;
+    d = (lD > 0.0f) ? ((d == 0.0f) ? lD : std::min(lD, d)) : d;
+    d = (rD > 0.0f) ? ((d == 0.0f) ? rD : std::min(rD, d)) : d;
+    d = (tD > 0.0f) ? ((d == 0.0f) ? bD : std::min(bD, d)) : d;
+    d = (bD > 0.0f) ? ((d == 0.0f) ? tD : std::min(tD, d)) : d;
 
     return d;
 }

@@ -14,7 +14,6 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <cstdbool>
 #include <cstdint>
 #include <stdint.h>
 #include <stdbool.h>
@@ -35,14 +34,8 @@
 #include <mutex>
 #include <queue>
 #include <memory>
-
-#define GLM_FORCE_INLINE
-#define GLM_FORCE_SIZE_T_LENGTH
-#define GLM_SWIZZLE
-#include <glm/glm.hpp>
-#include <glm/ext.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtx/matrix_decompose.hpp>
+#include <string>
+#include <string.h>
 
 #define MATH_DEG_TO_RAD(x)          ((x) * 0.0174532925f)
 #define MATH_RAD_TO_DEG(x)          ((x)* 57.29577951f)
@@ -69,12 +62,39 @@ using Ref = std::shared_ptr<T>;
 
 namespace rocket
 {
-    API typedef glm::mat4 RMatrix;
-    API typedef glm::quat RQuaternion;
-    API typedef glm::vec2 RVector2;
-    API typedef glm::vec3 RVector3;
-    API typedef glm::vec4 RVector4;
+    class RMatrix;
+    class RQuaternion;
+    class RVector2;
+    class RVector3;
+    class RVector4;
+    class RBoundingBox;
+    class RBoundingSphere;
+    class RFrustum;
+    class RPlane;
+    class RRay;
 
-
-    API class REngine;
+    class REngine;
 }
+
+// -- MATH -- //
+#include "RMatrix.h"
+#include "RQuaternion.h"
+#include "RVector2.h"
+#include "RVector3.h"
+#include "RVector4.h"
+#include "RBoundingBox.h"
+#include "RBoundingSphere.h"
+#include "RFrustum.h"
+#include "RPlane.h"
+#include "RRay.h"
+
+// -- CORE -- //
+#include "REngine.h"
+
+// -- GFX -- //
+
+// -- AUDIO -- //
+
+// -- NET -- //
+
+// -- UI -- //

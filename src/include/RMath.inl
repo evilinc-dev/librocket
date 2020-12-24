@@ -1,7 +1,5 @@
 #include "common.h"
 
-using std::memcopy;
-
 namespace rocket
 {
 

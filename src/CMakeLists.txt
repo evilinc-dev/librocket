@@ -39,7 +39,7 @@ target_link_libraries(rocket ${OPENGL_LIBRARY} librocket-deps.a)
 
 include(GNUInstallDirs)
 
-# install rtech
+# install rocket
 install( TARGETS rocket
     EXPORT rtech-config
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} )

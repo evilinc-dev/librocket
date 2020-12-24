@@ -4,6 +4,8 @@
 #include <RRay.h>
 #include <RBoundingSphere.h>
 #include <RBoundingBox.h>
+#include <RMatrix.h>
+#include <RVector3.h>
 
 namespace rocket
 {
@@ -64,7 +66,7 @@ API float RPlane::distance(const RVector3& point) const
     return _normal.x * point.x + _normal.y * point.y + _normal.z * point.z + _distance;
 }
 
-API void RPlane::intersection(const RPlane& p1, const RPlane& p2, const RPlane& p3, Vector3* point)
+API void RPlane::intersection(const RPlane& p1, const RPlane& p2, const RPlane& p3, RVector3* point)
 {
     // The planes' normals must be all normalized (which we guarantee in the RPlane class).
     // Calculate the determinant of the matrix (i.e | n1 n2 n3 |).

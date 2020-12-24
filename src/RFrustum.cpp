@@ -2,6 +2,8 @@
 #include <RFrustum.h>
 #include <RBoundingSphere.h>
 #include <RBoundingBox.h>
+#include <RMatrix.h>
+#include <RVector3.h>
 
 namespace rocket
 {
@@ -57,7 +59,7 @@ const RPlane& RFrustum::getTop() const
 
 void RFrustum::getMatrix(RMatrix* dst) const
 {
-    dst->set(_matrix);
+    dst = (RMatrix*)&_matrix;
 }
 
 void RFrustum::getCorners(RVector3* corners) const
@@ -138,12 +140,12 @@ void RFrustum::set(const RFrustum& RFrustum)
 
 void RFrustum::updateRPlanes()
 {
-    _near.set(RVector3(_matrix[3] + _matrix[2], _matrix[7] + _matrix[6], _matrix[11] + _matrix[10]), _matrix[15] + _matrix[14]);
-    _far.set(RVector3(_matrix[3] - _matrix[2], _matrix[7] - _matrix[6], _matrix[11] - _matrix[10]), _matrix[15] - _matrix[14]);
-    _bottom.set(RVector3(_matrix[3] + _matrix[1], _matrix[7] + _matrix[5], _matrix[11] + _matrix[9]), _matrix[15] + _matrix[13]);
-    _top.set(RVector3(_matrix[3] - _matrix[1], _matrix[7] - _matrix[5], _matrix[11] - _matrix[9]), _matrix[15] - _matrix[13]);
-    _left.set(RVector3(_matrix[3] + _matrix[0], _matrix[7] + _matrix[4], _matrix[11] + _matrix[8]), _matrix[15] + _matrix[12]);
-    _right.set(RVector3(_matrix[3] - _matrix[0], _matrix[7] - _matrix[4], _matrix[11] - _matrix[8]), _matrix[15] - _matrix[12]);
+    _near = RPlane(RVector3(_matrix.m[3] + _matrix.m[2], _matrix.m[7] + _matrix.m[6], _matrix.m[11] + _matrix.m[10]), _matrix.m[15] + _matrix.m[14]);
+    _far.set(RVector3(_matrix.m[3] - _matrix.m[2], _matrix.m[7] - _matrix.m[6], _matrix.m[11] - _matrix.m[10]), _matrix.m[15] - _matrix.m[14]);
+    _bottom.set(RVector3(_matrix.m[3] + _matrix.m[1], _matrix.m[7] + _matrix.m[5], _matrix.m[11] + _matrix.m[9]), _matrix.m[15] + _matrix.m[13]);
+    _top.set(RVector3(_matrix.m[3] - _matrix.m[1], _matrix.m[7] - _matrix.m[5], _matrix.m[11] - _matrix.m[9]), _matrix.m[15] - _matrix.m[13]);
+    _left.set(RVector3(_matrix.m[3] + _matrix.m[0], _matrix.m[7] + _matrix.m[4], _matrix.m[11] + _matrix.m[8]), _matrix.m[15] + _matrix.m[12]);
+    _right.set(RVector3(_matrix.m[3] - _matrix.m[0], _matrix.m[7] - _matrix.m[4], _matrix.m[11] - _matrix.m[8]), _matrix.m[15] - _matrix.m[12]);
 }
 
 void RFrustum::set(const RMatrix& matrix)

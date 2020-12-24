@@ -60,7 +60,7 @@ public:
      *
      * @param copy The rectangle to copy.
      */
-    RRectangle(const Rectangle& copy);
+    RRectangle(const RRectangle& copy);
 
     /**
      * Destructor.
