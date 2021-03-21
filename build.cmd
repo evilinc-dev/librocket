@@ -15,3 +15,4 @@ CD target
 cmake -D CMAKE_INSTALL_PREFIX=distribution ../src
 devenv rocket.sln /build Release
 
+cmake --install .

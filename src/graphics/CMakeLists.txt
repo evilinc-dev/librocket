@@ -1,0 +1,32 @@
+target_sources(rocket PRIVATE
+	RBlendState.cpp
+	RCullState.cpp
+	RFrameBuffer.cpp
+	RIndexBuffer.cpp
+	RMesh.cpp
+	RMeshBuilder.cpp
+	RMeshInstance.cpp
+	RMeshPart.cpp
+	RShader.cpp
+	RTexture.cpp
+	RTexture2D.cpp
+	RTexture3D.cpp
+	RVertexBuffer.cpp
+	RVertexDeclaration.cpp
+)
+target_sources(rocket PUBLIC
+	RBlendState.h
+	RCullState.h
+	RFrameBuffer.h
+	RIndexBuffer.h
+	RMesh.h
+	RMeshBuilder.h
+	RMeshInstance.h
+	RMeshPart.h
+	RShader.h
+	RTexture.h
+	RTexture2D.h
+	RTexture3D.h
+	RVertexBuffer.h
+	RVertexDeclaration.h
+)
