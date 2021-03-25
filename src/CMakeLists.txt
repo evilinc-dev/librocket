@@ -25,7 +25,14 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}
                     )
 link_directories(${CMAKE_SOURCE_DIR}../dependencies/lib)
 
-set(SOURCES REngine.cpp)
+set(SOURCES common.h
+	RApplication.h
+	RApplication.cpp
+	REngine.cpp
+	REngine.h
+	RWindow.h
+	RWindow.cpp
+)
 
 add_library(rocket STATIC ${SOURCES})
 add_subdirectory(audio)

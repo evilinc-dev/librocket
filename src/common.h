@@ -56,12 +56,22 @@
 #define M_1_PI                      0.31830988618379067154
 #endif
 
-
-template <typename T>
-using Ref = std::shared_ptr<T>;
-
 namespace rocket
 {
+    struct null_deleter
+    {
+        void operator()(void const*) const
+        {
+        }
+    };
+
+    template <typename T>
+    using Ref = std::shared_ptr<T>;
+
+    template<typename T>
+    Ref<T> new_ref(T args ...) { return std::make_shared(args ...); }
+
+
     class RMatrix;
     class RQuaternion;
     class RVector2;
@@ -74,6 +84,9 @@ namespace rocket
     class RRay;
 
     class REngine;
+    class RWindow;
+    class RApplication;
+    class RInput;
 }
 
 // -- MATH -- //
@@ -90,7 +103,14 @@ namespace rocket
 
 // -- CORE -- //
 #include "REngine.h"
+#include "RWindow.h"
+#include "RApplication.h"
 
+// -- INPUT -- //
+#include "input/RInput.h"
+#include "input/RKeyboard.h"
+#include "input/RMouse.h"
+#include "input/RGameController.h"
 // -- GFX -- //
 
 // -- AUDIO -- //

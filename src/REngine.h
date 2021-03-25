@@ -6,15 +6,16 @@ namespace rocket
 {
     class API REngine
     {
+        friend class RApplication;
     private:
         REngine();
         ~REngine();
 
-        void* window;
-        void* context;
+        Ref<RApplication> _application;
 
     public:
-        static REngine& instance();
+        static Ref<REngine> instance();
+        
         void clear();
         void present();
         void init();
