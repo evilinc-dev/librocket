@@ -69,7 +69,7 @@ namespace rocket
     using Ref = std::shared_ptr<T>;
 
     template<typename T>
-    Ref<T> new_ref(T args ...) { return std::make_shared(args ...); }
+    Ref<T> new_ref(T args) { return std::make_shared(args); }
 
 
     class RMatrix;
