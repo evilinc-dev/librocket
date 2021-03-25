@@ -58,19 +58,6 @@
 
 namespace rocket
 {
-    struct null_deleter
-    {
-        void operator()(void const*) const
-        {
-        }
-    };
-
-    template <typename T>
-    using Ref = std::shared_ptr<T>;
-
-    template<typename T>
-    Ref<T> new_ref(T args) { return std::make_shared(args); }
-
 
     class RMatrix;
     class RQuaternion;
@@ -88,6 +75,10 @@ namespace rocket
     class RApplication;
     class RInput;
 }
+// -- MEMORY/TYPES -- //
+#include "types/RConstants.h"
+#include "types/REnums.h"
+#include "types/RMemory.h"
 
 // -- MATH -- //
 #include "math/RMatrix.h"

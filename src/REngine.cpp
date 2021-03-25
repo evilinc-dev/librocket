@@ -1,5 +1,4 @@
-#include <REngine.h>
-#define GL_GLEXT_PROTOTYPES
+#include "REngine.h"
 
 namespace rocket
 {
